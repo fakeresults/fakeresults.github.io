@@ -20,13 +20,14 @@
                 var p = hashParams[i].split('=');
                 var newname = transone(p[0])
                 document.getElementById(newname).value = decodeURIComponent(p[1]);;
+                $("#" + newname).attr('readonly', 'readonly')
             }
         }
     </script>
     <script>
         $(window).bind("load", function() {
             transall(hashParams)
-            $("#" + x).attr('readonly', 'readonly')
+            
         });
     </script>
 </head>
