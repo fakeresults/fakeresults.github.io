@@ -1,24 +1,35 @@
-<p>
-    Your name:
-    <br /><input name="name" id="name" /></p>
+<html>
 
-<p>Your email:
-    <br /><input name="email" id="email" /></p>
-<script>
-    function getParam(name) {
-        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-            results = regex.exec(location.search);
-        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-    }
-    Webflow.push(function() {
-
-        // Auto-populate form fields (text fields only) based on query string
-        // For non-text fields like dropdown/radio/checkbox, please contact me for custom development (http://webflowexpert.com)
-        $('input:text, input[type=email]').each(function() {
-            var paramValue = getParam(this.id);
-            if (this.value == "" && paramValue != "") this.value = paramValue;
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function filler(text, filler) {
+            var elements = document.querySelectorAll("label");
+            var bubby = Array.prototype.filter.call(elements, function(element) {
+                return RegExp(text).test(element.textContent);
+            });
+            var zady = bubby[0].htmlFor
+            var element = document.getElementById(zady).value = zady;
+            return zady
+        }
+    </script>
+    <script>
+        $(window).bind("load", function() {
+            x = filler("Untitled", "pizza");
+            $("#" + x).attr('readonly', 'readonly')
         });
+    </script>
+</head>
 
-    });
-</script>
+<body>
+    <div class="cognito">
+        <script src="https://www.cognitoforms.com/s/wmRLvtC3NkijfHxTIeHSaA"></script>
+        <script>
+            Cognito.load("forms", {
+                id: "3"
+            });
+        </script>
+    </div>
+</body>
+
+</html>
