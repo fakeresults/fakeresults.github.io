@@ -1,23 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>JS Bin</title>
-</head>
-<body>
-<p>Your name:
-<br /><input name="name" id="name" /></p>
+<p>
+    Your name:
+    <br /><input name="name" id="name" /></p>
 
 <p>Your email:
-<br /><input name="email" id="email" /></p>
+    <br /><input name="email" id="email" /></p>
+<script>
+    function getParam(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    Webflow.push(function() {
 
-<script id="jsbin-javascript">
-const hash = '?name=some_text&email=more%20text';
-const example = "http://generatorinchief.github.io/test/" + hash;
+        // Auto-populate form fields (text fields only) based on query string
+        // For non-text fields like dropdown/radio/checkbox, please contact me for custom development (http://webflowexpert.com)
+        $('input:text, input[type=email]').each(function() {
+            var paramValue = getParam(this.id);
+            if (this.value == "" && paramValue != "") this.value = paramValue;
+        });
 
-(new URL(example)).searchParams.forEach((x, y) =>
-    document.getElementById(y).value = x);
+    });
 </script>
-</body>
-</html>
