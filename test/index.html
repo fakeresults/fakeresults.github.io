@@ -1,18 +1,17 @@
-
+<!DOCTYPE html>
 <html>
-  <head>
-    <script>
-  var hashParams = window.location.hash.substr(1).split('&'); // substr(1) to remove the `#`
-for(var i = 0; i < hashParams.length; i++){
-    var p = hashParams[i].split('=');
-    document.getElementById(p[0]).value = decodeURIComponent(p[1]);;
-}
-  </script>
-  </head>
-  <body>
-    <p>Your name:
-<br><input name="name" id="name"></p>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script type="text/javascript" src="hi.js" />
+  <title>JS Bin</title>
+</head>
+<body>
+<p>Your name:
+<br /><input name="name" id="name" /></p>
 
 <p>Your email:
-<br><input name="email" id="email"></p>
-</body></html>
+<br /><input name="email" id="email" /></p>
+
+</body>
+</html>
